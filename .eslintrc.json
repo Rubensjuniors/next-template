@@ -13,7 +13,9 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -26,17 +28,17 @@
     "@typescript-eslint",
     "react-hooks",
     "eslint-plugin-import-helpers",
-    "prettier"
+    "prettier",
+    "jest",
+    "jest-dom",
+    "testing-library"
   ],
   "rules": {
+    // react
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "no-console": "error",
-    "quotes": ["error", "single"],
-    "object-curly-spacing": ["warn", "always"],
-    "semi": ["error", "never"],
     "react/jsx-wrap-multilines": [
       "error",
       {
@@ -47,9 +49,33 @@
         "logical": "parens-new-line"
       }
     ],
+
+    /* Jest Rules */
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+
+    // typescript
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/member-delimiter-style": 0,
+    "@typescript-eslint/no-var-requires": 0,
+
+    /* App Rules */
     "no-multi-spaces": "error",
+    "no-duplicate-imports": ["warn", { "includeExports": true }],
+    "no-dupe-args": "error",
+    "no-dupe-keys": "warn",
+    "no-empty": "warn",
+    "jsx-quotes": ["error", "prefer-double"],
+    "no-console": "error",
+    "quotes": ["error", "single"],
+    "object-curly-spacing": ["warn", "always"],
+    "semi": ["error", "never"],
     "indent": [
       "error",
       2,
@@ -68,7 +94,10 @@
     "max-len": [
       "error",
       {
-        "code": 80
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true
       }
     ],
     "import-helpers/order-imports": [
@@ -94,10 +123,6 @@
           "ignoreCase": true
         }
       }
-    ],
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/member-delimiter-style": 0,
-    "@typescript-eslint/no-var-requires": 0
+    ]
   }
 }
